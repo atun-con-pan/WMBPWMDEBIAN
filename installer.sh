@@ -31,6 +31,18 @@ function status_code(){
 }
 
 
+## ══════════════┃ VERIFICAR LA DISTRO ES DEBIAN ┃═════════════ ##
+check_distro() {
+    if [ -e /etc/os-release ] && grep -q 'debian' /etc/os-release; then
+        echo ""
+    else
+        echo -e "\n${red}[X] ESTE SCRIPT SOLO FUNCIONA PARA DEBIAN${end}\n"
+        sleep 5
+        exit 1
+    fi
+}
+
+
 ## ══════════════┃ VERIFICAR SI SE ESTÁ EJECUTANDO CON ROOT ┃═════════════ ##
 function check_user(){
   if [ "$(id -u)" == "0" ]; then
@@ -497,8 +509,12 @@ function slim(){
   sudo apt update &>/dev/null
   status_code
 
+  sudo apt install slim -y
+  clear
+  status_code
+
   echo -e "\n${yellow}[*] INSTALANDO PAQUETES PARA SLIM"
-  declare -a required_packages=(slim libpam0g-dev libxrandr-dev libfreetype6-dev libimlib2-dev libxft-dev)
+  declare -a required_packages=(libpam0g-dev libxrandr-dev libfreetype6-dev libimlib2-dev libxft-dev)
   package_installer
   status_code
 
@@ -559,26 +575,27 @@ function change_session(){
 		echo -e "\n${red}" 
     echo -n █ CERRANDO SESIÓN - INICIE SESIÓN EN BSPWM COMO EL USUARIO $USER = ;
     sleep 10 & while [ "$(ps a | awk '{print $1}' | grep $!)" ] ; do for X in '-' '\' '|' '/'; do echo -en "\b$X"; sleep 0.1; done; done
-		#kill -9 -1
     sudo systemctl start slim
 		sudo reboot
 	fi
 }
 
+
 #══════════════┃ MAIN ┃═════════════
 
-#distro
-#check_user 2>/dev/null
-#iface 2>/dev/null
-#check_internet 2>/dev/null
-#dependencies 2>/dev/null
-#bspwm_sxhkd 2>/dev/null
-#Polybar 2>/dev/null
-#picom_rofi 2>/dev/null
-#feh_ilock 2>/dev/null
-#extra_utilities	2>/dev/null
-#fonts 2>/dev/null
-#configs 2>/dev/null
-#zsh_config 2>/dev/null
-#slim
+check_distro
+distro
+check_user 2>/dev/null
+iface 2>/dev/null
+check_internet 2>/dev/null
+dependencies 2>/dev/null
+bspwm_sxhkd 2>/dev/null
+Polybar 2>/dev/null
+picom_rofi 2>/dev/null
+feh_ilock 2>/dev/null
+extra_utilities	2>/dev/null
+fonts 2>/dev/null
+configs 2>/dev/null
+zsh_config 2>/dev/null
+slim
 change_session
