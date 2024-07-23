@@ -385,7 +385,7 @@ function configs(){
   cd config
 	sed -i "s/USER/$USER/g" polybar/scripts/powermenu
 	sed -i "s/USER/$USER/g" polybar/scripts/powermenu_alt
-	cp polybar/* -r ~/.config/bspwm/polybar/. && chmod +x ~/.config/bspwm/polybar/launch.sh
+	cp $HOME/bspwm/config/polybar/* -r ~/.config/bspwm/polybar/. && chmod +x ~/.config/bspwm/polybar/launch.sh
 	sudo cp polybar/fonts/* /usr/share/fonts/truetype/. && fc-cache -v install_ilock-col &>/dev/null
 	mkdir ~/.config/bin && sudo rm -r ../bspwm ../polybar ../sxhkd ../0
 	cp $HOME/bspwm/config/bin/* -r ~/.config/bspwm/scripts/. && chmod +x ~/.config/bspwm/scripts/* && chmod +x ~/.config/bspwm/polybar/scripts/launcher ~/.config/bspwm/polybar/scripts/powermenu ~/.config/bspwm/polybar/scripts/powermenu_alt
@@ -583,17 +583,17 @@ function change_session(){
 
 #══════════════┃ MAIN ┃═════════════
 
-check_distro
-check_user 2>/dev/null
-iface 2>/dev/null
-check_internet 2>/dev/null
-dependencies 2>/dev/null
-bspwm_sxhkd 2>/dev/null
-Polybar 2>/dev/null
-picom_rofi 2>/dev/null
-feh_ilock 2>/dev/null
-extra_utilities	2>/dev/null
-fonts 2>/dev/null
+#check_distro
+#check_user 2>/dev/null
+#iface 2>/dev/null
+#check_internet 2>/dev/null
+#dependencies 2>/dev/null
+#spwm_sxhkd 2>/dev/null
+#Polybar 2>/dev/null
+#picom_rofi 2>/dev/null
+#feh_ilock 2>/dev/null
+#extra_utilities	2>/dev/null
+#fonts 2>/dev/null
 configs 2>/dev/null
 zsh_config 2>/dev/null
 slim
