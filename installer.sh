@@ -584,7 +584,6 @@ function change_session(){
 #══════════════┃ MAIN ┃═════════════
 
 check_distro
-distro
 check_user 2>/dev/null
 iface 2>/dev/null
 check_internet 2>/dev/null
