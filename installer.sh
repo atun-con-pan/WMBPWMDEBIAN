@@ -558,8 +558,6 @@ function slim(){
     local dm_name
     dm_name=$(basename "$dm_path")
 
-    sudo systemctl disable "$dm_name" &>/dev/null
-    sudo systemctl enable slim &>/dev/null
   fi
   status_code
 
@@ -575,7 +573,6 @@ function change_session(){
 		echo -e "\n${red}" 
     echo -n █ CERRANDO SESIÓN - INICIE SESIÓN EN BSPWM COMO EL USUARIO $USER = ;
     sleep 10 & while [ "$(ps a | awk '{print $1}' | grep $!)" ] ; do for X in '-' '\' '|' '/'; do echo -en "\b$X"; sleep 0.1; done; done
-    sudo systemctl start slim
 		sudo reboot
 	fi
 }
