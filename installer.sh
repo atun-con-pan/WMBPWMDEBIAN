@@ -583,17 +583,17 @@ function change_session(){
 
 #══════════════┃ MAIN ┃═════════════
 
-#check_distro
-#check_user 2>/dev/null
-#iface 2>/dev/null
-#check_internet 2>/dev/null
-#dependencies 2>/dev/null
-#spwm_sxhkd 2>/dev/null
-#Polybar 2>/dev/null
-#picom_rofi 2>/dev/null
-#feh_ilock 2>/dev/null
-#extra_utilities	2>/dev/null
-#fonts 2>/dev/null
+check_distro
+check_user 2>/dev/null
+iface 2>/dev/null
+check_internet 2>/dev/null
+dependencies 2>/dev/null
+spwm_sxhkd 2>/dev/null
+Polybar 2>/dev/null
+picom_rofi 2>/dev/null
+feh_ilock 2>/dev/null
+extra_utilities	2>/dev/null
+fonts 2>/dev/null
 configs 2>/dev/null
 zsh_config 2>/dev/null
 slim
