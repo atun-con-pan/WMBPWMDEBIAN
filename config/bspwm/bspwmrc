@@ -21,12 +21,11 @@ bspc rule -a burp-StartBurp: state=floating
 bspc rule -a XTerm: state=floating
 
 feh --bg-fill ~/.config/bspwm/Wallpaper.png
-#feh --bg-fill ~/.config/bspwm/tux.jpg
-~/.config/polybar/./launch.sh
+~/.config/bspwm/polybar/./launch.sh
 bspc config focus_follows_pointer true
 picom &
 bspc config border_width 0
 xsetroot -cursor_name left_ptr &
 vmware-user-suid-wrapper &
-~/.config/bin/battery.sh &
+~/.config/bspwm/scripts/battery.sh &
 bluetoothctl power off

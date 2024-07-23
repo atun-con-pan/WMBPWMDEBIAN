@@ -21,4 +21,3 @@ polybar ip -c ~/.config/polybar/current.ini &
 
 ## Center bar
 polybar primary -c ~/.config/polybar/workspace.ini &
-
