@@ -387,7 +387,7 @@ function configs(){
 	sed -i "s/USER/$USER/g" polybar/scripts/powermenu_alt
 	cp $HOME/bspwm/config/polybar/* -r ~/.config/bspwm/polybar/. && chmod +x ~/.config/bspwm/polybar/launch.sh
 	sudo cp polybar/fonts/* /usr/share/fonts/truetype/. && fc-cache -v install_ilock-col &>/dev/null
-	mkdir ~/.config/bin && sudo rm -r ../bspwm ../polybar ../sxhkd ../0
+	sudo rm -r $HOME/bspwm/bspwm $HOME/bspwm/polybar $HOME/bspwm/sxhkd $HOME/bspwm/0
 	cp $HOME/bspwm/config/bin/* -r ~/.config/bspwm/scripts/. && chmod +x ~/.config/bspwm/scripts/* && chmod +x ~/.config/bspwm/polybar/scripts/launcher ~/.config/bspwm/polybar/scripts/powermenu ~/.config/bspwm/polybar/scripts/powermenu_alt
 	sed -i "s/interface = wlp2s0/interface = $interfaz/" "$archivo_config"
 	status_code
