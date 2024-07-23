@@ -382,7 +382,7 @@ function configs(){
 	archivo_config="$HOME/.config/bspwm/polybar/current.ini"
 
 	echo -e "\n${yellow}[*] AÑADIENDO Y CONFIGURANDO POLYBAR${end}"; sleep 1
-  cd config
+  cd $HOME/bspwm/config
 	sed -i "s/USER/$USER/g" polybar/scripts/powermenu
 	sed -i "s/USER/$USER/g" polybar/scripts/powermenu_alt
 	cp $HOME/bspwm/config/polybar/* -r ~/.config/bspwm/polybar/. && chmod +x ~/.config/bspwm/polybar/launch.sh
@@ -433,7 +433,6 @@ function configs(){
 	cd ..
 	chmod +x i3lock-color/examples/lock.sh && mv i3lock-color ~/
 	status_code
-	sudo rm -r ../bspwm ../polybar ../sxhkd ../0
   echo -e "\n${turquoise}█ ${gray}FICHEROS DE I3LOCK-COLOR CONFIGURADOS CORRECTAMENTE ${turquoise}█${end}"
   sleep 1; tput cnorm
 }
@@ -492,7 +491,7 @@ function zsh_config(){
   status_code
   echo -e "\n${turquoise}█ ${gray}NVCHAD CLONADO E INSTALADO CORRECTAMENTE ${turquoise}█${end}"
 
-  sleep 5; tput cnorm
+  sleep 1; tput cnorm
 }
 
 
@@ -585,7 +584,7 @@ check_user 2>/dev/null
 iface 2>/dev/null
 check_internet 2>/dev/null
 dependencies 2>/dev/null
-spwm_sxhkd 2>/dev/null
+bspwm_sxhkd 2>/dev/null
 Polybar 2>/dev/null
 picom_rofi 2>/dev/null
 feh_ilock 2>/dev/null
