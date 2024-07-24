@@ -1,18 +1,17 @@
-<h1>Créditos Invertebr4do https://github.com/Invertebr4do/EASY-PWM</h1>
+<h1>Créditos a Invertebr4do https://github.com/Invertebr4do/EASY-PWM</h1>
 
 <h1>BSPWM</h1>
 
-Este script hecho en bash está creado para la automatización de mi configuración de bspwm, es casi la misma de *Invertebr4do*, pero con algunos cambios.
-Esta utilidad está pensada para que sea completamente automática, esto te permitirá salir a tomarte un café mientras se configura tu entorno bspwm.
+Este script hecho en bash y está creado para configurar bspwm de forma automática está bazado en la configuración de *Invertebr4do* que a su vez está bazado en la configuración de *S4vitar*
 
 ## Testeado en los siguientes OS:
-- Kali Linux 2023.4 y Debian 12
+- Debian 12
 
 ## Instalación:
 <strong>SE RECOMIENDA RALIZAR EL PROCEDIMIENTO EN UNA ISO NUEVA</strong>
 - Clonamos el repositorio
 ```
-https://github.com/atun-con-pan/bspwm.git
+https://github.com/atun-con-pan/bspwm
 ```
 - Nos metemos en el directorio, asignamos permisos de ejecución a la herramienta
 
