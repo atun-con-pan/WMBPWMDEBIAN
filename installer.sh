@@ -592,5 +592,5 @@ extra_utilities	2>/dev/null
 fonts 2>/dev/null
 configs 2>/dev/null
 zsh_config 2>/dev/null
-#slim
+slim
 change_session
