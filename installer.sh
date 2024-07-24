@@ -135,7 +135,7 @@ function dependencies(){
 
   echo -e "\n${yellow}[*] CONFIGURANDO TERMINAL KITTY${end}"; sleep 1
   mkdir ~/.config/kitty 2>/dev/null
-  cp {config/kitty/kitty.conf,config/kitty/color.ini} ~/.config/kitty/.
+  cp {$HOME/bspwm/config/kitty/kitty.conf,$HOME/bspwm/config/kitty/color.ini} ~/.config/kitty/.
 }
 
 
@@ -156,7 +156,7 @@ function bspwm_sxhkd(){
   sleep 1
 
   function install_bspwm(){
-	  cd bspwm/
+	  cd $HOME/bspwm/bspwm/
 	  make
 	  status_code
 	  sudo make install
@@ -171,7 +171,7 @@ function bspwm_sxhkd(){
 
 	echo -e "\n${yellow}[*] INSTALANDO SXHKD${end}"; sleep 1
   function install_sxhkd(){
-    cd sxhkd/
+    cd $HOME/bspwm/sxhkd/
 	  make
 	  status_code
     sudo make install
@@ -191,26 +191,26 @@ function bspwm_sxhkd(){
 	echo -e "\n${yellow}[*] CARGANDO ALGUNOS FICHEROS DE BSPWM Y SXHKD${end}"; sleep 1
 	mkdir ~/.config/bspwm
   mkdir ~/.config/bspwm/sxhkd
-	cp config/bspwm/bspwmrc ~/.config/bspwm/
+	cp $HOME/bspwm/config/bspwm/bspwmrc ~/.config/bspwm/
 	status_code
   echo -e "\n${turquoise}█ ${gray}FICHEROS CARGADOS CORRECTAMENTE ${turquoise}█${end}"
   sleep 1
 
 	echo -e "\n${yellow}[*] CONFIGURANDO BSPWMRC${end}"; sleep 1
-	cat config/bspwm/bspwmrc | sed 's/USER/'$USER'/g' > ~/.config/bspwm/bspwmrc && chmod +x ~/.config/bspwm/bspwmrc
+	cat $HOME/bspwm/config/bspwm/bspwmrc | sed 's/USER/'$USER'/g' > ~/.config/bspwm/bspwmrc && chmod +x ~/.config/bspwm/bspwmrc
 	status_code
 	echo -e "\n${turquoise}█ ${gray}BSPWMRC CONFIGURADO CORRECTAMENTE ${turquoise}█${end}"
 	sleep 1
 
 	echo -e "\n${yellow}[*] CONFIGURANDO SXHKDRC${end}"; sleep 1
-	cat config/sxhkd/sxhkdrc | sed 's/USER/'$USER'/g' > ~/.config/bspwm/sxhkd/sxhkdrc
+	cat $HOME/bspwm/config/sxhkd/sxhkdrc | sed 's/USER/'$USER'/g' > ~/.config/bspwm/sxhkd/sxhkdrc
   status_code
   echo -e "\n${turquoise}█ ${gray}SXHKDRC CONFIGURADO CORRECTAMENTE ${turquoise}█${end}"
   sleep 1
 
 	echo -e "\n${yellow}[*] CONFIGURANDO BSPWM_RESIZE${end}"; sleep 1
 	mkdir ~/.config/bspwm/scripts/
-	cp config/bspwm/scripts/bspwm_resize ~/.config/bspwm/scripts/. && chmod +x ~/.config/bspwm/scripts/bspwm_resize
+	cp $HOME/bspwm/config/bspwm/scripts/bspwm_resize ~/.config/bspwm/scripts/. && chmod +x ~/.config/bspwm/scripts/bspwm_resize
 	status_code
   echo -e "\n${turquoise}█ ${gray}BSPWM_RESIZE CONFIGURADO CORRECTAMENTE ${turquoise}█${end}"
   sleep 1; tput cnorm
@@ -232,9 +232,9 @@ function Polybar(){
 
   function install_polybar(){
 	  git clone --recursive https://github.com/polybar/polybar
-	  cd polybar/
-	  mkdir build
-	  cd build/
+	  cd $HOME/bspwm/polybar/
+	  mkdir $HOME/bspwm/build
+	  cd $HOME/bspwm/build/
 	  cmake ..
 	  status_code
 	  make -j$(nproc)
@@ -275,7 +275,7 @@ function picom_rofi(){
 
   function install_picom(){
     git clone https://github.com/ibhagwan/picom.git
-	  cd picom/
+	  cd $HOME/bspwm/picom/
 	  git submodule update --init --recursive
 	  status_code
 	  meson --buildtype=release . build
@@ -383,12 +383,12 @@ function configs(){
 
 	echo -e "\n${yellow}[*] AÑADIENDO Y CONFIGURANDO POLYBAR${end}"; sleep 1
   cd $HOME/bspwm/config
-	sed -i "s/USER/$USER/g" polybar/scripts/powermenu
-	sed -i "s/USER/$USER/g" polybar/scripts/powermenu_alt
+	sed -i "s/USER/$USER/g" $HOME/bspwm/config/polybar/scripts/powermenu
+	sed -i "s/USER/$USER/g" $HOME/bspwm/config/polybar/scripts/powermenu_alt
 	cp $HOME/bspwm/config/polybar/* -r ~/.config/bspwm/polybar/. && chmod +x ~/.config/bspwm/polybar/launch.sh
-	sudo cp polybar/fonts/* /usr/share/fonts/truetype/. && fc-cache -v install_ilock-col &>/dev/null
+	sudo cp $HOME/bspwm/config/polybar/fonts/* /usr/share/fonts/truetype/. && fc-cache -v install_ilock-col &>/dev/null
 	sudo rm -r $HOME/bspwm/bspwm $HOME/bspwm/polybar $HOME/bspwm/sxhkd $HOME/bspwm/0
-	cp $HOME/bspwm/config/bin/* -r ~/.config/bspwm/scripts/. && chmod +x ~/.config/bspwm/scripts/* && chmod +x ~/.config/bspwm/polybar/scripts/launcher ~/.config/bspwm/polybar/scripts/powermenu ~/.config/bspwm/polybar/scripts/powermenu_alt
+	cp $HOME/bspwm/config/bin/* -r ~/.config/bspwm/scripts/. && chmod +x ~/.config/bspwm/scripts/* && chmod +x ~/.config/bspwm/polybar/scripts/*
 	sed -i "s/interface = wlp2s0/interface = $interfaz/" "$archivo_config"
 	status_code
 	echo -e "\n${turquoise}█ ${gray}POLYBAR AÑADIDA Y CONFIGURADA CORRECTAMENTE ${turquoise}█${end}"; sleep 1
@@ -592,5 +592,5 @@ extra_utilities	2>/dev/null
 fonts 2>/dev/null
 configs 2>/dev/null
 zsh_config 2>/dev/null
-slim
+#slim
 change_session
