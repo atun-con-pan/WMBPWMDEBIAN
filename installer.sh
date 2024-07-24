@@ -34,7 +34,7 @@ function status_code(){
 ## ══════════════┃ VERIFICAR LA DISTRO ES DEBIAN ┃═════════════ ##
 check_distro() {
     if [ -e /etc/os-release ] && grep -q 'debian' /etc/os-release; then
-        echo ""
+        echo -e "\n${green}[✔] SISTEMA COMPATIBLE${end}"
     else
         echo -e "\n${red}[X] ESTE SCRIPT SOLO FUNCIONA PARA DEBIAN${end}\n"
         sleep 5
@@ -123,7 +123,7 @@ function dependencies(){
     sleep 2 & while [ "$(ps a | awk '{print $1}' | grep $!)" ] ; do for X in '-' '\' '|' '/'; do echo -en "\b$X"; sleep 0.1; done; done
     echo -e "${end}\n"
 
-    declare -a required_packages=(build-essential libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev libxinerama1 libxinerama-dev kitty flameshot brightnessctl pamixer moreutils)
+    declare -a required_packages=(zsh build-essential libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev libxinerama1 libxinerama-dev kitty flameshot brightnessctl pamixer moreutils)
     package_installer
 
     echo -e "\n${turquoise}█ ${gray}PAQUETES INSTALADOS CORRECTAMENTE ${turquoise}█${end}"
@@ -232,9 +232,9 @@ function Polybar(){
 
   function install_polybar(){
 	  git clone --recursive https://github.com/polybar/polybar
-	  cd $HOME/bspwm/polybar/
-	  mkdir $HOME/bspwm/build
-	  cd $HOME/bspwm/build/
+	  cd polybar/
+	  mkdir build
+	  cd build/
 	  cmake ..
 	  status_code
 	  make -j$(nproc)
@@ -275,7 +275,7 @@ function picom_rofi(){
 
   function install_picom(){
     git clone https://github.com/ibhagwan/picom.git
-	  cd $HOME/bspwm/picom/
+	  cd picom/
 	  git submodule update --init --recursive
 	  status_code
 	  meson --buildtype=release . build
@@ -323,7 +323,7 @@ function feh_ilock(){
   echo -e "\n${yellow}[*] INSTALANDO FEH"; sleep 1
   sudo apt install feh -y &>/dev/null
   status_code
-	cp config/bspwm/Wallpaper.png ~/.config/bspwm/.
+	cp $HOME/bspwm/config/bspwm/Wallpaper.png ~/.config/bspwm/.
   echo -e "\n${turquoise}█ ${gray}FEH INSTALADO CORRECTAMENTE ${turquoise}█${end}"
   sleep 1
 
